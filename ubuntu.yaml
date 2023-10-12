@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+  labels:
+    app: ubuntu
+spec:
+  containers:
+  - image: docker.io/trourest186/curl-new # Giang fix
+    imagePullPolicy: Always
+    name: ubuntu
+    command: [ "/bin/bash", "-c", "--" ] # Giang fix
+    args: [ "while true; do sleep 30; done;" ]
+  restartPolicy: Always
+  nodeSelector:
+    kubernetes.io/hostname: user #fix
