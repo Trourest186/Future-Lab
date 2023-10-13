@@ -106,6 +106,7 @@ def is_image_available(target_pod: str, start_timeline: datetime = None):
             break
     return is_pulled
 
+
 def create_namespaced_service(target_service: str, target_ID: str,
                               target_service_port: int, target_namespace: str = "serverless"):
     service_name = target_service + "-" + target_ID + "-service"
@@ -373,6 +374,7 @@ def is_endpoint_available(target_namespce: str = "serverless"):
     if len(get_endpoint_response.items) != 0:
         return True
     else:
+        print("377")
         return False
 
 if __name__ == "__main__":

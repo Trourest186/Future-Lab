@@ -104,10 +104,14 @@ def collect_null_to_warm_disk_process(host:str, image:str, target_pods:int, repe
 
 def collect_null_to_cold_process(host:str, image:str, target_pods:int, repetition:int, state:str):
     print("Scenario: {} - Started".format(state))
+    count = 0
     while jobs_status[state]:
         get_prometheus_values_and_update_job(host, image, target_pods, state, repetition)
         time.sleep(0.2)
-        if  k8s_API.is_endpoint_available() == True:  # detect if image has been pulled successfully
+        if state == "null_to_cold_process":
+            count = count + 1 
+        if  (k8s_API.is_endpoint_available() == True) or count == 10:
+            print("Line 111")  # detect if image has been pulled successfully
             jobs_status[state] = False
     print("Scenario: {} - Ended".format(state))
 

@@ -9,7 +9,7 @@ import sys
 
 if __name__ == "__main__":
     
-    target_pods_scale = [1]
+    target_pods_scale = [5]
     repeat_time = 1
     current_time = 1
     # node = 'jetson' # Fix
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     # list_quality = []
 
     # list video: highway.mp4, 4K_video_59s.webm, traffic_34s.webm, video.mp4
-    # target_video = "highway.mp4"
+    # target_video = "highway.mp4"f
     # detection_image = ""
 
     for target_pod in target_pods_scale:

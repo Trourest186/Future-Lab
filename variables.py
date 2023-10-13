@@ -24,7 +24,7 @@ MEC_PASSWORD = "1"
 JETSON_USERNAME = 'worker2.kn'
 JETSON_PASSWORD = "1"
 # STREAMING_IP = "172.16.42.11"
-STREAMING_IP = "172.16.10.153" # Chưa có, sẽ làm xong. Một là hội tụ không có TC, hai là có TC
+STREAMING_IP = "192.168.226.6" # Chưa có, sẽ làm xong. Một là hội tụ không có TC, hai là có TC
 NAMESPACE = "serverless"
 
 
@@ -38,7 +38,8 @@ SLASH = "/"
 TEST_MODE = False
 
 # Network interfacte
-NETWORK_INTERFACE = "eth0"
+# NETWORK_INTERFACE = "eth0" # Chưa hiểu
+NETWORK_INTERFACE = "ens33" # Chưa hiểu
 PROMETHEUS_DOMAIN = "http://" + PROM_IP + COLON + \
     PROMETHEUS_PORT + "/api/v1/query?query="
 # SERVICE_DOMAIN = "http://serverless.default.svc.cluster.local"  # Khong dung
@@ -83,9 +84,9 @@ DATA_DIRECTORY = DEFAULT_DIRECTORY + "/data/"
 DEPLOYMENT_PATH = DEFAULT_DIRECTORY + "/deploy.yaml"
 TEMPLATE_PATH = DEFAULT_DIRECTORY + "/template.yaml"
 DATA_PROMETHEUS_FILE_DIRECTORY = DEFAULT_DIRECTORY + \
-    "/data/resource/{}/{}_pod_{}_rep_{}_{}.csv"
+    "/data/resource/{}/{}/{}_pod_{}_rep_{}_{}.csv" # cần fix để lưu vào các loại mạng khác nhau, thêm một dấu {}
 DATA_TIMESTAMP_FILE_DIRECTORY = DEFAULT_DIRECTORY + \
-    "/data/timestamp/{}/time_{}_pod_{}_rep_{}_{}.csv"
+    "/data/timestamp/{}/{}/time_{}_pod_{}_rep_{}_{}.csv"
 DATA_CURL_FILE_DIRECTORY = DEFAULT_DIRECTORY + \
     "/data/curl/{}/{}_pod_{}_rep_{}_{}.csv"
 DATA_FPS_FILE_DIRECTORY = DEFAULT_DIRECTORY + \
@@ -144,7 +145,7 @@ CURL_FPS = "curl http://detection{}.serverless.svc.cluster.local/download -o fil
 
 
 # STATE
-NULL_STATE = "null_state"a
+NULL_STATE = "null_state"
 WARM_DISK_STATE = "warm_disk_state"
 WARM_CPU_STATE = "warm_cpu_state"
 WARM_MEM_STATE = "warm_mem_state"

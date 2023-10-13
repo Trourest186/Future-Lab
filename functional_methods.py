@@ -15,7 +15,7 @@ from multiprocessing.pool import ThreadPool
 import subprocess
 import os
 import signal
-from power import pw, em
+# from power import pw, em
 from variables import *
 import k8s_API
 from time import sleep
@@ -132,16 +132,18 @@ def get_curl_values_and_update_job(cmd: str, host: str, image: str, target_pods:
 
 
 def get_prometheus_values_and_update_job(host: str, image: str, target_pods: int, state: str, repetition: int):
+    network_type = "4G" # Change ok!
     ip = ""
     gpu_query = ""
     values_power = 0
     values_energy = 0
     # Chắc chắn không dùng
     if host == 'jetson':
-        ip = JETSON_IP
-        # gpu_query = VALUES_GPU_QUERY_JETSON
-        values_power = pw.get_power()/1000.0
-        values_energy = 0 # Jetson power board has now energy value, so pls ignore it
+        print("hello, no!!!")
+        # ip = JETSON_IP
+        # # gpu_query = VALUES_GPU_QUERY_JETSON
+        # values_power = pw.get_power()/1000.0
+        # values_energy = 0 # Jetson power board has now energy value, so pls ignore it
     else:
         ip = MEC_IP
 
@@ -169,7 +171,7 @@ def get_prometheus_values_and_update_job(host: str, image: str, target_pods: int
     # write values to file
     try:
         writer = csv.writer(open(DATA_PROMETHEUS_FILE_DIRECTORY.format(
-            str(host), str(image), str(target_pods), str(repetition), generate_file_time), 'a'))
+            str(host), str(network_type), str(image), str(target_pods), str(repetition), generate_file_time), 'a'))
         writer.writerow([values_memory[0], datetime.utcfromtimestamp(values_memory[0]).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], values_running_pods,
                          values_power, values_energy, values_per_cpu_in_use[1], values_per_gpu_in_use[1], values_memory[1], values_nw, state])
     except Exception as ex:
@@ -214,8 +216,9 @@ def bash_cmd(cmd: str):
 
 def timestamps_to_file(host: str, image: str, timestamps: dict, target_pods: int, repetition: int):
     # print(timestamps)
+    network_type = "4G"
     with open(DATA_TIMESTAMP_FILE_DIRECTORY.format(
-            str(host), str(image), str(target_pods), str(repetition), generate_file_time), 'w') as f:
+            str(host), str(network_type) ,str(image), str(target_pods), str(repetition), generate_file_time), 'w') as f:
         # for key, value in terminate_state.items():
         #     timestamps[key+"_start"]=min(value)
         #     timestamps[key+"_end"]=max(value)

@@ -16,4 +16,4 @@ spec:
         ports:
         - containerPort: 8080
       nodeSelector:
-        kubernetes.io/hostname: mec
+        kubernetes.io/hostname: worker1.kn
