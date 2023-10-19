@@ -132,7 +132,7 @@ def get_curl_values_and_update_job(cmd: str, host: str, image: str, target_pods:
 
 
 def get_prometheus_values_and_update_job(host: str, image: str, target_pods: int, state: str, repetition: int):
-    network_type = "4G" # Change ok!
+    network_type = "wifi2" # Change ok!
     ip = ""
     gpu_query = ""
     values_power = 0
@@ -216,7 +216,7 @@ def bash_cmd(cmd: str):
 
 def timestamps_to_file(host: str, image: str, timestamps: dict, target_pods: int, repetition: int):
     # print(timestamps)
-    network_type = "4G"
+    network_type = "wifi2"
     with open(DATA_TIMESTAMP_FILE_DIRECTORY.format(
             str(host), str(network_type) ,str(image), str(target_pods), str(repetition), generate_file_time), 'w') as f:
         # for key, value in terminate_state.items():
