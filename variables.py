@@ -16,7 +16,7 @@ PROM_IP = "172.16.10.150"
 # MEC_IP = "172.16.42.12"
 MEC_IP = "172.16.10.151"
 # JETSON_IP = '192.168.1.2'
-JETSON_IP = '172.16.10.152'
+JETSON_IP = '192.168.226.7'
 
 MEC_USERNAME = "worker1.kn" # Phân vân
 MEC_PASSWORD = "1"
@@ -24,7 +24,7 @@ MEC_PASSWORD = "1"
 JETSON_USERNAME = 'worker2.kn'
 JETSON_PASSWORD = "1"
 # STREAMING_IP = "172.16.42.11"
-STREAMING_IP = "192.168.226.6" # Chưa có, sẽ làm xong. Một là hội tụ không có TC, hai là có TC
+STREAMING_IP = "192.168.226.6" 
 NAMESPACE = "serverless"
 
 

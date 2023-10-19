@@ -132,7 +132,7 @@ def get_curl_values_and_update_job(cmd: str, host: str, image: str, target_pods:
 
 
 def get_prometheus_values_and_update_job(host: str, image: str, target_pods: int, state: str, repetition: int):
-    network_type = "wifi2" # Change ok!
+    network_type = "4G" # Change ok!
     ip = ""
     gpu_query = ""
     values_power = 0
@@ -145,8 +145,8 @@ def get_prometheus_values_and_update_job(host: str, image: str, target_pods: int
         # values_power = pw.get_power()/1000.0
         # values_energy = 0 # Jetson power board has now energy value, so pls ignore it
     else:
-        ip = MEC_IP
-
+        # ip = MEC_IP 
+        ip = JETSON_IP
         # Tạm thời không dùng
         # gpu_query = VALUES_GPU_QUERY_MEC 
         gpu_query = 0
@@ -216,7 +216,7 @@ def bash_cmd(cmd: str):
 
 def timestamps_to_file(host: str, image: str, timestamps: dict, target_pods: int, repetition: int):
     # print(timestamps)
-    network_type = "wifi2"
+    network_type = "4G"
     with open(DATA_TIMESTAMP_FILE_DIRECTORY.format(
             str(host), str(network_type) ,str(image), str(target_pods), str(repetition), generate_file_time), 'w') as f:
         # for key, value in terminate_state.items():

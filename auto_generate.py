@@ -9,11 +9,11 @@ import sys
 
 if __name__ == "__main__":
     
-    target_pods_scale = [5]
+    target_pods_scale = [1]
     repeat_time = 1
     current_time = 1
     # node = 'jetson' # Fix
-    node = 'worker1.kn'
+    node = 'worker2.kn'
     # image = 'arm' #Fix
     image = 'x86'
 
